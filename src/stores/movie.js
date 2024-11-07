@@ -62,6 +62,41 @@ export const useMoviesStore = defineStore('movies', {
         return false;
       }
     },
+    // Calculate most viewed movie and genre
+    async getMostViewedMovie () {
+      try {
+        const response = await axios.get('http://localhost:3000/movies');
+        const movies = response.data;
+        return movies.reduce((max, movie) => (movie.views > max.views ? movie : max), movies[0]);
+      } catch (error) {
+        console.error("Failed to fetch most viewed movie", error);
+        return null;
+      }
+    },
+
+    async getMostViewedGenre () {
+      try {
+        const response = await axios.get('http://localhost:3000/movies');
+        const movies = response.data;
+        const genreViews = {};
+
+        movies.forEach((movie) => {
+          movie.genres.forEach((genre) => {
+            genreViews[genre] = (genreViews[genre] || 0) + movie.views;
+          });
+        });
+
+        const mostViewedGenre = Object.entries(genreViews).reduce(
+          (max, [genre, views]) => (views > max.views ? { genre, views } : max),
+          { genre: '', views: 0 }
+        );
+
+        return mostViewedGenre;
+      } catch (error) {
+        console.error("Failed to fetch most viewed genre", error);
+        return null;
+      }
+    }
   },
   getters: {
     filteredMovies: (state) => (page) => {
