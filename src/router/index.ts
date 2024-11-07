@@ -7,7 +7,7 @@ const routes = [
   { path: '/', component: MovieList },
   { path: '/login', component: Login },
   { path: '/register', component: Register },
-  { path: '/movie/:id', component: () => import('../views/Users/MovieDetails.vue') },
+  { path: '/movie/:id', component: () => import('../views/Users/MovieDetail.vue') },
   { path: '/admin/add', component: () => import('../views/Admin/AddMovie.vue') },
   { path: '/admin/edit', component: () => import('../views/Admin/EditMovie.vue') }
 ];

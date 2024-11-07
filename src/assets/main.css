@@ -1,4 +1,7 @@
 @import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 #app {
   max-width: 1280px;
@@ -15,6 +18,11 @@ a,
   padding: 3px;
 }
 
+input {
+  border: 1px solid var(--vt-c-text-light-1);
+  margin-left: 2rem;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
@@ -29,7 +37,10 @@ a,
 
   #app {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1280px;
+    grid-template-rows: 0.25fr 1fr;
     padding: 0 2rem;
+    place-items: center;
+    min-height: 100vh;
   }
 }
