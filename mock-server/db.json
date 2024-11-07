@@ -1,0 +1,53 @@
+{
+    "movies": [
+      {
+        "id": 1,
+        "title": "The Grand Festival",
+        "description": "An epic story of resilience and courage.",
+        "duration": 120,
+        "artists": [
+          "Jane Doe",
+          "John Smith"
+        ],
+        "genres": [
+          "Drama",
+          "Adventure"
+        ],
+        "watchUrl": "https://example.com/the-grand-festival.mp4",
+        "views": 150,
+        "votes": 50
+      },
+      {
+        "id": 2,
+        "title": "Comedy Central",
+        "description": "A laugh-out-loud journey through the quirks of life.",
+        "duration": 90,
+        "artists": [
+          "Alice Brown",
+          "Chris Green"
+        ],
+        "genres": [
+          "Comedy"
+        ],
+        "watchUrl": "https://example.com/comedy-central.mp4",
+        "views": 200,
+        "votes": 75
+      }
+    ],
+    "users": [
+      {
+        "id": 1,
+        "username": "admin",
+        "password": "admin123",
+        "role": "admin",
+        "token": "123"
+      },
+      {
+        "id": 2,
+        "username": "user1",
+        "password": "user123",
+        "role": "user",
+        "token": "456"
+      }
+    ]
+}
