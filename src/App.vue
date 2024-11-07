@@ -1,29 +1,54 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+  import { RouterLink, RouterView } from 'vue-router'
+  import { useAuthStore } from '@/stores/auth';
+  import { useRouter } from 'vue-router';
+  const authStore = useAuthStore();
+  const isAuthenticated = authStore.isAuthenticated;
+  const role = JSON.parse(localStorage.getItem('role'));
+  const isAdmin = (role == "admin");
+  const router = useRouter();
+
+  const logout = () => {
+    authStore.logout();
+    router.push({ path: '/login' });
+  };
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <!-- <HelloWorld msg="You did it!" /> -->
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/login" v-if="!isAuthenticated">Login</RouterLink>
+        <RouterLink to="/register" v-if="!isAuthenticated">Register</RouterLink>
+        <RouterLink to="/admin/add" v-if="isAuthenticated && isAdmin">Admin</RouterLink>
+        <RouterLink to="/" v-if="isAuthenticated && !isAdmin">User</RouterLink>
+        <button @click="logout()" v-if="isAuthenticated">Logout</button>
       </nav>
     </div>
   </header>
 
-  <RouterView />
+  <div class="content">
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  /* max-height: 100vh; */
+  width: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
 }
 
 .logo {
