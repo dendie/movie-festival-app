@@ -49,5 +49,42 @@
         "role": "user",
         "token": "456"
       }
+    ],
+    "votes": [
+        {
+        "id": "1",
+        "movieId": 1,
+        "userId": 2
+        },
+        {
+        "id": "2",
+        "movieId": 2,
+        "userId": 2
+        },
+        {
+        "id": "3",
+        "movieId": 2,
+        "userId": 3
+        }
+    ],
+    "views": [
+        {
+        "id": "1",
+        "movieId": 1,
+        "userId": 2,
+        "durationWatched": 120
+        },
+        {
+        "id": "2",
+        "movieId": 1,
+        "userId": null,
+        "durationWatched": 30
+        },
+        {
+        "id": "3",
+        "movieId": 2,
+        "userId": 3,
+        "durationWatched": 90
+        }
     ]
 }
