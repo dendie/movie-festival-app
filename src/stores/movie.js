@@ -39,7 +39,29 @@ export const useMoviesStore = defineStore('movies', {
       } catch (error) {
         console.error('Error adding movie:', error);
       }
-    }
+    },
+    // Fetch movie by ID
+    async getMovieById (id) {
+      try {
+        const response = await axios.get(`http://localhost:3000/movies/${id}`);
+        return response.data;
+      } catch (error) {
+        console.error("Failed to fetch movie by ID", error);
+        return null;
+      }
+    },
+    // Update movie
+    async updateMovie (id, updatedMovie) {
+      try {
+        await axios.put(`http://localhost:3000/movies/${id}`, updatedMovie);
+        const index = this.movies.findIndex((m) => m.id === id);
+        if (index !== -1) this.movies[index] = updatedMovie;
+        return true;
+      } catch (error) {
+        console.error("Failed to update movie", error);
+        return false;
+      }
+    },
   },
   getters: {
     filteredMovies: (state) => (page) => {

@@ -25,6 +25,7 @@
         <RouterLink to="/login" v-if="!isAuthenticated">Login</RouterLink>
         <RouterLink to="/register" v-if="!isAuthenticated">Register</RouterLink>
         <RouterLink to="/admin/add" v-if="isAuthenticated && isAdmin">Admin</RouterLink>
+        <RouterLink to="/admin/edit" v-if="isAuthenticated && isAdmin">Update Movie</RouterLink>
         <RouterLink to="/" v-if="isAuthenticated && !isAdmin">User</RouterLink>
         <button @click="logout()" v-if="isAuthenticated">Logout</button>
       </nav>
